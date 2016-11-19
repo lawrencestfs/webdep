@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.cefetrj.webdep.view.command;
+package br.cefetrj.webdep.view.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -74,7 +74,7 @@ public class NovoPadraoURL extends HttpServlet {
             erro_json = erro_json.replace(",]}","]}");
             if (erro) pw.write(erro_json);
             else {
-                /*Inser��o no banco*/
+                /*Insercao no banco*/
                 //PadraoURLsDAO urlDAO = new PadraoURLsDAO();
                 PadraoURL padraoURL = new PadraoURL();
                 padraoURL.setNome(nome);
@@ -88,8 +88,8 @@ public class NovoPadraoURL extends HttpServlet {
             response.setContentType("text/plain");
             try{
                 /*  Pattern p = Pattern.compile(regex);
-                    Aqui utiliza-se o DAO do outro grupo que est� respons�vel por guardar as URLs no banco.
-                    A inten��o � pegar todas as URLs do banco:
+                    Aqui utiliza-se o DAO do outro grupo que esta responsavel por guardar as URLs no banco.
+                    A intencao e pegar todas as URLs do banco:
                     
                     URLsDAO urlDAO = new URLsDAO();
                     List<String> urlsFiltradas = new ArrayList<>();
@@ -101,7 +101,7 @@ public class NovoPadraoURL extends HttpServlet {
                         }
                     }
                     //Transformar as URLs filtradas em JSON pra mandar de volta 
-                    //pra p�gina
+                    //pra pagina
                     json = "{\"url\": [";
                     for (String url: urlsFiltradas){
                         json += "\"";

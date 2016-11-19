@@ -3,6 +3,7 @@ package br.cefetrj.webdep.model.dao;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 public class PersistenceManager {
 		
@@ -38,10 +39,13 @@ public class PersistenceManager {
 		this.manager.getTransaction().rollback();
 	}
 	
+	public Query createQuery(String query){
+		return this.manager.createQuery(query);
+	}
+	
 	@Override
 	public void finalize(){
 		this.manager.close();
 		this.emFactory.close();
 	}
-
 }
