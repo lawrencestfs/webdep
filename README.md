@@ -1,6 +1,4 @@
-# webdep
-
-WebDep (Web Dependability)
+# WebDep (Web Dependability)
 
 Objetivo e Escopo:
 O objetivo do software apresentado neste documento é ampliar a visão do nível de confiança dos softwares web em uso nas empresas.
