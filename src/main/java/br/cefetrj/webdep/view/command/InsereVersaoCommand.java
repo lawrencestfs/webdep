@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.cefetrj.webdep.model.entity.Versao;
-import br.cefetrj.webdep.services.VersionServices;
+import br.cefetrj.webdep.services.VersaoServices;
 
-public class InsertVersionCommand implements Command{
+public class InsereVersaoCommand implements Command{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -24,7 +24,7 @@ public class InsertVersionCommand implements Command{
 		v.setNome(request.getParameter("nome"));
 		//v.setSistema();
 		v.setTimestampLiberacao(l);
-		VersionServices.insertVersion(v);
+		VersaoServices.insertVersion(v);
 		
 		
 	}

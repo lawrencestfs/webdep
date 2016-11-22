@@ -1,5 +1,9 @@
-<!-- 
-links barra menu -->
+<!-- Taglib necessária para acessar as funções de formatação -->
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+
+
+<!-- links barra menu -->
 <nav class="navbar navbar-default">
 	<div class="container-fluid">
 
@@ -13,8 +17,8 @@ links barra menu -->
 					aria-expanded="false"> WebDep <span class="caret"></span>
 				</a>
 					<ul class="dropdown-menu">
-						<li><a href="#"><fmt:message key="br.cefetrj.webdep.jsp.navbar.webdep.cadastrarusuario" /></a></li>
-						<li><a href="#"><fmt:message key="br.cefetrj.webdep.jsp.navbar.webdep.listaralterarexcluir" /></a></li>
+						<li><a href="cadastraUsuario.jsp"><fmt:message key="br.cefetrj.webdep.jsp.navbar.webdep.cadastrarusuario" /></a></li>
+						<li><a href="listaUsuario.jsp"><fmt:message key="br.cefetrj.webdep.jsp.navbar.webdep.listaralterarexcluir" /></a></li>
 						<li><a href="#"><fmt:message key="br.cefetrj.webdep.jsp.navbar.webdep.configuracoes" /></a></li>
 					</ul></li>
 				<!-- WebDep -->
@@ -22,11 +26,10 @@ links barra menu -->
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false"> <fmt:message key="br.cefetrj.webdep.jsp.navbar.sistemas" /><span class="caret"></span>
 						<ul class="dropdown-menu">
-							<li><a href='cadastrodesistema.jsp'><fmt:message key="br.cefetrj.webdep.jsp.navbar.sistemas.cadastrarsistema" /></a></li>
-							<li><a href="gerenciadorsistema.jsp"><fmt:message key="br.cefetrj.webdep.jsp.navbar.sistemas.listaratualizarexcluir" /></a></li>
+							<li><a href="cadastraSistema.jsp"><fmt:message key="br.cefetrj.webdep.jsp.navbar.sistemas.cadastrarsistema" /></a></li>
+							<li><a href="gerenciadorSistema.jsp"><fmt:message key="br.cefetrj.webdep.jsp.navbar.sistemas.listaratualizarexcluir" /></a></li>
 							<li><a href="versionRegistration.jsp"><fmt:message key="br.cefetrj.webdep.jsp.navbar.sistemas.cadastrarnovaversao" /></a></li>
 							<li><a href="versionSearch.jsp"><fmt:message key="br.cefetrj.webdep.jsp.navbar.sistemas.listaratualizarexcluirversoes" /></a></li>
-
 						</ul></li>
 				<!-- END SISTEMAS -->
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
@@ -78,23 +81,22 @@ links barra menu -->
 </nav>
 
   <div class="modal fade" id="logoutModal" role="dialog">
-    <div class="modal-dialog">
-    
+    <div class="modal-dialog modal-sm">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Header do modal de deslogar Aqui</h4>
+          <h4 class="modal-title">Confirmação</h4>
         </div>
         <div class="modal-body">
-          <p>Mensagem de deslogar Aqui</p>
+          <p>Confirma sair do sistema?</p>
         </div>
         <div class="modal-footer">
         <form method="post" action="FrontControllerServlet">
           <button id="submit-padrao-url" name="action" value="deslogaUsuario" type="submit" class="btn btn-primary"><fmt:message key="br.cefetrj.webdep.jsp.vs.confirm" /></button>
-          <button type="button" class="btn btn-default" data-dismiss="modal"><fmt:message key="br.cefetrj.webdep.jsp.vs.cancel" /></button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal"><fmt:message key="br.cefetrj.webdep.jsp.vs.cancel" /></button>
         </form>
         </div>
-      </div>
-      
+      </div>  
     </div>
   </div>
+  

@@ -45,7 +45,12 @@
             </div>
             <br></br>
             <div class="row">
-                <button type="button" class="btn btn-secondary btn-lg center-block">Voltar</button>
+                <button onclick="goBack()" type="button" class="btn btn-secondary btn-lg center-block">Voltar</button>
+				<script>
+				function goBack() {
+				    window.history.back();
+				}
+				</script>
             </div>
             <br></br>
             <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">

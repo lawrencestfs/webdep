@@ -6,6 +6,14 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * Classe responsavel por deslogar usuarios do sistema.
+ * 
+ * @author Lawrence Fernandes
+ * @version 0.1
+ * @since   18-11-2016 
+ */
+
 public class DeslogaUsuarioCommand implements Command {
 
 	@Override

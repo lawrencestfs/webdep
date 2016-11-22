@@ -20,17 +20,19 @@
 <body>
 	<%@include file="navbar.jspf"%>
 	
-	Vamos começar?<br/>
-	<br/>
-	1 - Inicie cadastrando um sistema a monitorar - Clique aqui para cadastrar<br/>
-	2 - Selecione um sistema para trabalhar<br/>
-	3 - Registre uma versão do sistema<br/>
-	4 - Importe manualmente os dados de logs históricos<br/>
-	5 - Emita Relatórios de Perfil de Acesso e Analise os Erros no Sistema (Código HTTP)<br/>
-	<br/>
-	Outras ações que você pode querer realizar<br/>
-	  . Cadastre usuários e atribua permissões a eles<br/>
-	  . Selecione exclua dados históricos de logs<br/>	
+	<h5>Vamos começar?</h5>
+	<ol>
+		<li>Inicie cadastrando um sistema a monitorar - <a href="cadastraSistema.jsp">Clique aqui para cadastrar</a></li>
+		<li><a href="#">Selecione um sistema para trabalhar</a></li>
+		<li><a href="versionRegistration.jsp">Registre uma versão do sistema</a></li>
+		<li><a href="#">Importe manualmente os dados de logs históricos</a></li>
+		<li><a href="#">Emita Relatórios de Perfil de Acesso e Analise os Erros no Sistema (Código HTTP)</a></li>
+	</ol>
+	<h5>Outras ações que você pode querer realizar</h5>
+	<ul>
+	  <li><a href="cadastraUsuario.jsp">Cadastre usuários e atribua permissões a eles</a></li>
+	  <li><a href="#">Selecione exclua dados históricos de logs</a></li>
+	</ul>	
 	
 	<jsp:include page="scripts.jspf"/>	
 </body>

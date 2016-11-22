@@ -49,7 +49,7 @@
     							</div>
   							</div>
   							
-                            <button type="submit" style="width: 50%; font-size:1.1em;" class="btn btn-default" name="action" value ="autenticaUsuario" ><b>Entrar</b></button>
+                            <button type="submit" style="width: 50%; font-size:1.1em;" class="btn btn-primary" name="action" value ="autenticaUsuario" ><b>Entrar</b></button>
 							
 							<div class="container">
 								<br/>

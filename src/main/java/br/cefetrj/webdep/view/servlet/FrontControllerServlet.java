@@ -10,17 +10,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.cefetrj.webdep.view.command.Command;
-import br.cefetrj.webdep.view.command.InsertVersionCommand;
-import br.cefetrj.webdep.view.command.SearchVersionCommand;
-import br.cefetrj.webdep.view.command.ValidaHttpReportCommand;
-import br.cefetrj.webdep.view.command.ObterUsuarioCommand;
+import br.cefetrj.webdep.view.command.AtualizaUsuarioCommand;
 import br.cefetrj.webdep.view.command.AutenticaUsuarioCommand;
+import br.cefetrj.webdep.view.command.CadastraUsuarioCommand;
+import br.cefetrj.webdep.view.command.Command;
+import br.cefetrj.webdep.view.command.DeletaUsuarioCommand;
 import br.cefetrj.webdep.view.command.DeslogaUsuarioCommand;
+import br.cefetrj.webdep.view.command.InsereVersaoCommand;
+import br.cefetrj.webdep.view.command.ListaUsuarioCommand;
+import br.cefetrj.webdep.view.command.ObterUsuarioCommand;
+import br.cefetrj.webdep.view.command.ObterVersaoCommand;
+import br.cefetrj.webdep.view.command.ValidaHttpReportCommand;
 
 /**
  * Servlet implementation class FrontControllerServlet
  */
+
 @WebServlet("/FrontControllerServlet")
 public class FrontControllerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -28,13 +33,18 @@ public class FrontControllerServlet extends HttpServlet {
 	private static Map<String, Command> commands = new HashMap<>();
 	
 	static{
-		commands.put("insertVersion", new InsertVersionCommand());
-		commands.put("searchVersion", new SearchVersionCommand());
+		commands.put("insertVersion", new InsereVersaoCommand());
+		commands.put("searchVersion", new ObterVersaoCommand());
 		commands.put("getUsuario", new ObterUsuarioCommand());
 		commands.put("errorParameter", new ValidaHttpReportCommand());
 		
 		commands.put("autenticaUsuario", new AutenticaUsuarioCommand());
 		commands.put("deslogaUsuario", new DeslogaUsuarioCommand());
+		
+		commands.put("cadastraUsuario", new CadastraUsuarioCommand());
+		commands.put("listaUsuario", new ListaUsuarioCommand());
+		commands.put("alteraUsuario", new AtualizaUsuarioCommand());
+		commands.put("deletaUsuario", new DeletaUsuarioCommand());
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

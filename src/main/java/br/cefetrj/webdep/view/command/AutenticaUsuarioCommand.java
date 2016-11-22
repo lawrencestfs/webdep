@@ -7,8 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * A classe AuntenticaUsuario implementa interface Command, 
- * sendo responsavel por checar o login e senha do usuario 
+ * Classe responsavel por checar o login e senha do usuario 
  * no momento de acesso ao sistema.
  * 
  * @author Lawrence Fernandes
