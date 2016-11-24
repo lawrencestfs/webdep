@@ -14,15 +14,15 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css">
 </head>
 <body>
+    <%@include file="navbar.jspf"%>
 	<div style="padding: 5%">
-		<form action="AlterUser" method="POST">
+		<form action="FrontControllerServlet" method="POST" id="jqCad">
 		<input type="hidden" name="id" value="${ usuario.id }">
-		<input type="hidden" id="jqListSis" value="${ sis }">
+		<input type="hidden" name="action" value="alteraUsuario" />
 		<c:if test="${AlterErroUsu}">
 				<h3><fmt:message key="br.cefetrj.psw.user.msg_erro.alter"/></h3>
 			</c:if>			
 		<c:if test="${not AlterErroUsu}">
-		<form action="FrontControllerServlet" method="POST" id="jqCad">
 		<div class="panel panel-default">
 		  <div class="panel-heading"><fmt:message key="br.cefetrj.psw.user.panel" /></div>
 		  <div class="panel-body">

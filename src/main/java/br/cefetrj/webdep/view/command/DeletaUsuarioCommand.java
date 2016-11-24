@@ -65,7 +65,7 @@ public class DeletaUsuarioCommand implements Command {
 			
 			if(usu != null){
 				usuSe.remover(usu);
-				request.getRequestDispatcher("ListUser").forward(request, response);	
+				request.getRequestDispatcher("listaUsuario.jsp").forward(request, response);	
 			}else{
 				request.setAttribute("AlterErroUsu", true);
 				request.getRequestDispatcher("alteraUsuario.jsp").forward(request, response);
@@ -78,7 +78,17 @@ public class DeletaUsuarioCommand implements Command {
 	}
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		final Boolean get;
+		if(request.getParameter("get") != null){
+			get = Boolean.valueOf(request.getParameter("get"));
+		}else{
+			get = false;
+		}
 		
+		if(get == null || get == true){
+			doGet(request, response);
+		}else{
+			doPost(request, response);
+		}	
 	}
 }

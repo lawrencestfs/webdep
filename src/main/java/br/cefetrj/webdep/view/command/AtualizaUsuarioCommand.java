@@ -98,14 +98,14 @@ public class AtualizaUsuarioCommand implements Command {
 
 		final String senha1;
 		if(request.getParameter("senha") != null){
-			senha1 = request.getParameter("senha");
+			senha1 = AutenticaUsuarioCommand.sha512(request.getParameter("senha"));
 		}else{
 			senha1 = "";
 		}
 		
 		final String senha2;
 		if(request.getParameter("senha2") != null){
-			senha2 = request.getParameter("senha2");
+			senha2 = AutenticaUsuarioCommand.sha512(request.getParameter("senha2"));
 		}else{
 			senha2 = "";
 		}
@@ -221,8 +221,18 @@ public class AtualizaUsuarioCommand implements Command {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		final Boolean get;
+		if(request.getParameter("get") != null){
+			get = Boolean.valueOf(request.getParameter("get"));
+		}else{
+			get = false;
+		}
 		
+		if(get == null || get == true){
+			doGet(request, response);
+		}else{
+			doPost(request, response);
+		}
 	}
 
 }

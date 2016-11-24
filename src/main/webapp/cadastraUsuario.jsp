@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -14,6 +14,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css">
 </head>
 <body>
+    <%@include file="navbar.jspf"%>
 	<div style="padding: 5%">
 		<form action="FrontControllerServlet" method="POST" id="jqCad">
 		<div class="panel panel-default">
@@ -94,8 +95,9 @@
 
 			</div>
 		</div>
+		<input type="hidden" name="action" value="cadastraUsuario" />
 		<div class="text-center">
-			<button type="submit" class="btn btn-primary" name="action" value ="cadastraUsuario" ><b><fmt:message key="br.cefetrj.psw.user.bt_salvar"/></b></button>
+			<button type="submit" class="btn btn-primary" ><b><fmt:message key="br.cefetrj.psw.user.bt_salvar"/></b></button>
 			<!-- <input type="submit" class="btn btn-default" value="<fmt:message key="br.cefetrj.psw.user.bt_salvar"/>" />  -->
 			<a class="btn btn-danger" href="home.jsp"><fmt:message key="br.cefetrj.psw.user.bt_cancelar"/></a>
 		</div>

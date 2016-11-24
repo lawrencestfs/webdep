@@ -52,7 +52,17 @@ public class ListaUsuarioCommand implements Command {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		final Boolean get;
+		if(request.getParameter("get") != null){
+			get = Boolean.valueOf(request.getParameter("get"));
+		}else{
+			get = false;
+		}
 		
+		if(get == null || get == true){
+			doGet(request, response);
+		}else{
+			doPost(request, response);
+		}		
 	}
 }

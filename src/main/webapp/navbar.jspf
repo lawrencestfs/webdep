@@ -85,10 +85,10 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Confirmação</h4>
+          <h4 class="modal-title"><fmt:message key="br.cefetrj.webdep.jsp.navbar.idioma.confirmacao" /></h4>
         </div>
         <div class="modal-body">
-          <p>Confirma sair do sistema?</p>
+          <p><fmt:message key="br.cefetrj.webdep.jsp.navbar.idioma.confirmasair" /></p>
         </div>
         <div class="modal-footer">
         <form method="post" action="FrontControllerServlet">

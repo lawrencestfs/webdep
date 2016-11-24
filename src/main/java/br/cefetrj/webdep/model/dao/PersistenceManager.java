@@ -13,7 +13,7 @@ public class PersistenceManager {
 	private static PersistenceManager instance;
 	
 	private PersistenceManager(){
-		this.emFactory = Persistence.createEntityManagerFactory("WebDepHSQLDBPU");
+		this.emFactory = Persistence.createEntityManagerFactory("WebDepMYSQLDBPU");
 		this.manager = emFactory.createEntityManager();
 	}
 	
