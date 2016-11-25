@@ -197,6 +197,7 @@ public class AtualizaUsuarioCommand implements Command {
 		}else{
 			
 			Usuario usu = new Usuario();
+			usu.setId(Long.valueOf(id));
 			usu.setNome(nome);
 			usu.setEmail(email);
 			usu.setLogin(login);

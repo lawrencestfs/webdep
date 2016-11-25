@@ -1,8 +1,6 @@
 <!-- Taglib necessária para acessar as funções de formatação -->
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-
-
 <!-- links barra menu -->
 <nav class="navbar navbar-default">
 	<div class="container-fluid">
@@ -24,7 +22,7 @@
 				<!-- WebDep -->
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
-					aria-expanded="false"> <fmt:message key="br.cefetrj.webdep.jsp.navbar.sistemas" /><span class="caret"></span>
+					aria-expanded="false"> <fmt:message key="br.cefetrj.webdep.jsp.navbar.sistemas" /><span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="cadastraSistema.jsp"><fmt:message key="br.cefetrj.webdep.jsp.navbar.sistemas.cadastrarsistema" /></a></li>
 							<li><a href="gerenciadorSistema.jsp"><fmt:message key="br.cefetrj.webdep.jsp.navbar.sistemas.listaratualizarexcluir" /></a></li>
@@ -34,7 +32,7 @@
 				<!-- END SISTEMAS -->
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
-					aria-expanded="false"> Logs<span class="caret"></span>
+					aria-expanded="false"> Logs<span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="#"><fmt:message key="br.cefetrj.webdep.jsp.navbar.logs.importarlogs" /></a></li>
 							<li><a href="#"><fmt:message key="br.cefetrj.webdep.jsp.navbar.logs.consultarexcluirregistrosdeacesso" /></a></li>
@@ -44,7 +42,7 @@
 				<!-- END LOGS -->
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
-					aria-expanded="false"> <fmt:message key="br.cefetrj.webdep.jsp.navbar.relatorios" /><span class="caret"></span>
+					aria-expanded="false"> <fmt:message key="br.cefetrj.webdep.jsp.navbar.relatorios" /></a><span class="caret"></span>
 						<ul class="dropdown-menu">
 							<li><a href="#"><fmt:message key="br.cefetrj.webdep.jsp.navbar.relatorios.perfildeacesso" /></a></li>
 							<li><a href="HTTPreport.jsp"><fmt:message key="br.cefetrj.webdep.jsp.navbar.relatorios.confiabilidadeurls" /></a></li>
