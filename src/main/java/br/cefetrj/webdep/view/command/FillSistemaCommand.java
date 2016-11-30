@@ -2,50 +2,53 @@ package br.cefetrj.webdep.view.command;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
+
+import java.text.ParseException;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.ZoneId;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.cefetrj.webdep.model.entity.Sistema;
-import br.cefetrj.webdep.services.ServidorServices;
 import br.cefetrj.webdep.services.SistemaServices;
 
-public class FillSistemaCommand implements Command {
-
+public class FillSistemaCommand implements Command{
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String filtro = request.getParameter("filtro");
 		PrintWriter pw = response.getWriter();
-		Sistema s = new Sistema();
-		String id = request.getParameter("filtro");
-		String json = "{\"sistema\":";
-		try {
-			s = SistemaServices.searchSistema(id).get(0);
-			json += "{";
-			json += "\"id\":\"" + s.getId() + "\",";
-			json += "\"nome\":\"" + s.getNome() + "\",";
-			json += "\"servidor\":\"" + s.getServidor().getNome() + "\",";
-			json += "\"formatolog\":\"" + s.getServidor().getFormatoLog().getNome() + "\",";
-			json += "\"periodicidade\":\"" + s.getPeriodicidadeLeitura().toString() + "\",";
-			json += "\"ptLogs\":\"" + s.getPastaLogAcesso().toString() + "\",";
-			json += "\"pxLogs\":\"" + s.getPrefixoLogAcesso().toString() + "\",";
-			json += "\"ptLogs2\":\"" + s.getPastaLogErro().toString() + "\",";
-			json += "\"pxLogs2\":\"" + s.getPrefixoLogErro().toString() + "\",";
-			json += "\"periodicidade\":\"" + s.getPeriodicidadeLeitura().toString() + "\",";
-			json += "\"proximaleitura\":\"" + "Ultima leitura + periodicidade" + "\"";
+		String json = "";
+		Sistema s = SistemaServices.searchSistema(filtro).get(0);
+		if (s != null){
+			json = "{\"sistema\":";
+				json += "{";
+				json += "\"nome\":\"" + s.getNome() + "\",";
+				json += "\"servidor\":\"" + s.getServidor().getNome() + "\",";
+				json += "\"formatolog\":\"" + s.getServidor().getFormatoLog().getNome() + "\",";
+				json += "\"ptLogs\":\"" + s.getPastaLogAcesso() + "\",";
+				json += "\"pxLogs\":\"" + s.getPrefixoLogAcesso() + "\",";
+				json += "\"ptLogs2\":\"" + s.getPastaLogErro() + "\",";
+				json += "\"pxLogs2\":\"" + s.getPrefixoLogErro() + "\",";
+				json += "\"data\":\"" + s.getPrimeiraLeitura().toLocalDate().toString() + "\",";
+				Calendar cal = Calendar.getInstance();
+				cal.setTimeInMillis(s.getPeriodicidadeLeitura());
+				LocalDateTime ofInstant = LocalDateTime.ofInstant(cal.toInstant(), ZoneId.systemDefault());
+				json += "\"time\":\"" + s.getPrimeiraLeitura().toLocalTime().toString() + "\",";
+				json += "\"novaData\":\"" + ofInstant.toLocalTime().toString() + "\"";
+				json += "}";
 			json += "}";
-			json += "}";
-			response.setContentType("application/json");
-
-		} catch (Exception e) {
-			json = "";
-			e.printStackTrace();
-		} finally {
-			pw.write(json);
+		} else {
+			json = "{\"Erro\": \"Nenhum resultado encontrado\"}";
 		}
+		response.setContentType("application/json");
+		pw.write(json);
 	}
 }

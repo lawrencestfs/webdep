@@ -38,7 +38,7 @@ public class ValidaHttpReportCommand implements Command {
 		}
 		
 		if((versionValidate == false) || (errorValidate == false) || (okValidate = false)){
-			request.getRequestDispatcher("HTTPreport.jsp").forward(request, response);
+			request.getRequestDispatcher("httpReport.jsp").forward(request, response);
 			return;
 		} else {
 			//Lógica para a busca dos filtros...

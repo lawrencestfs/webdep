@@ -1,18 +1,12 @@
 package br.cefetrj.webdep.services;
 
-import br.cefetrj.webdep.model.dao.GenericDAO;
-import br.cefetrj.webdep.model.dao.PersistenceManager;
-import br.cefetrj.webdep.model.entity.Sistema;
-import br.cefetrj.webdep.model.entity.Usuario;
-
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
+import br.cefetrj.webdep.model.dao.GenericDAO;
+import br.cefetrj.webdep.model.dao.PersistenceManager;
+import br.cefetrj.webdep.model.entity.Usuario;
 
 public class UsuarioServices {
 
@@ -30,6 +24,7 @@ public class UsuarioServices {
 		
 		return usuario;
 	}
+	
 	
 	public static Usuario obterPorId(Long id){
 		Usuario usuario = null;
@@ -155,4 +150,5 @@ public class UsuarioServices {
 		
 		return 	usuario;
 	}
+	
 }

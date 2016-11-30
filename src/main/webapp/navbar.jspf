@@ -1,6 +1,15 @@
 <!-- Taglib necessária para acessar as funções de formatação -->
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
+<!-- Alerta para expiração de sessão -->
+<script>
+    var secondsBeforeExpire = ${pageContext.session.maxInactiveInterval};
+    var timeToDecide = 15; // Give client 15 seconds to choose.
+    setTimeout(function() {
+    	$("#sessionTimeout").modal("show");
+    }, (secondsBeforeExpire - timeToDecide) * 1000);
+</script>
+
 <!-- links barra menu -->
 <nav class="navbar navbar-default">
 	<div class="container-fluid">
@@ -12,12 +21,15 @@
 			<ul class="nav navbar-nav">
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
-					aria-expanded="false"> WebDep <span class="caret"></span>
+					aria-expanded="false">WebDep<span class="caret"></span>
 				</a>
 					<ul class="dropdown-menu">
-						<li><a href="cadastraUsuario.jsp"><fmt:message key="br.cefetrj.webdep.jsp.navbar.webdep.cadastrarusuario" /></a></li>
-						<li><a href="listaUsuario.jsp"><fmt:message key="br.cefetrj.webdep.jsp.navbar.webdep.listaralterarexcluir" /></a></li>
-						<li><a href="#"><fmt:message key="br.cefetrj.webdep.jsp.navbar.webdep.configuracoes" /></a></li>
+						<li><a href="FrontControllerServlet?action=cadastraUsuario&get=true"><fmt:message
+										key="br.cefetrj.webdep.jsp.navbar.webdep.cadastrarusuario" /></a></li>
+						<li><a href="FrontControllerServlet?action=listaUsuario&get=true"><fmt:message
+										key="br.cefetrj.webdep.jsp.navbar.webdep.listaralterarexcluir" /></a></li>
+						<li><a href="./config.jsp"><fmt:message
+										key="br.cefetrj.webdep.jsp.navbar.webdep.configuracoes" /></a></li>
 					</ul></li>
 				<!-- WebDep -->
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
@@ -32,20 +44,21 @@
 				<!-- END SISTEMAS -->
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
-					aria-expanded="false"> Logs<span class="caret"></span></a>
+					aria-expanded="false"><fmt:message key="br.cefetrj.psw.importaLog.logs" /><span class="caret"></span></a>
+					
 						<ul class="dropdown-menu">
-							<li><a href="#"><fmt:message key="br.cefetrj.webdep.jsp.navbar.logs.importarlogs" /></a></li>
-							<li><a href="#"><fmt:message key="br.cefetrj.webdep.jsp.navbar.logs.consultarexcluirregistrosdeacesso" /></a></li>
-							<li><a href="#"><fmt:message key="br.cefetrj.webdep.jsp.navbar.logs.consultarexcluirregistrosdeerro" /></a></li>
+							<li><a href="importarLog.jsp"><fmt:message key="br.cefetrj.webdep.jsp.navbar.logs.importarlogs" /></a></li>
+							<li><a href="excluirLogAcesso.jsp"><fmt:message key="br.cefetrj.webdep.jsp.navbar.logs.consultarexcluirregistrosdeacesso" /></a></li>
+							<li><a href="excluirLogErro.jsp"><fmt:message key="br.cefetrj.webdep.jsp.navbar.logs.consultarexcluirregistrosdeerro" /></a></li>
 
 						</ul></li>
 				<!-- END LOGS -->
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
-					aria-expanded="false"> <fmt:message key="br.cefetrj.webdep.jsp.navbar.relatorios" /></a><span class="caret"></span>
+					aria-expanded="false"> <fmt:message key="br.cefetrj.webdep.jsp.navbar.relatorios" /><span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="#"><fmt:message key="br.cefetrj.webdep.jsp.navbar.relatorios.perfildeacesso" /></a></li>
-							<li><a href="HTTPreport.jsp"><fmt:message key="br.cefetrj.webdep.jsp.navbar.relatorios.confiabilidadeurls" /></a></li>
+							<li><a href="accessProfileReport.jsp"><fmt:message key="br.cefetrj.webdep.jsp.navbar.relatorios.perfildeacesso" /></a></li>
+							<li><a href="httpReport.jsp"><fmt:message key="br.cefetrj.webdep.jsp.navbar.relatorios.confiabilidadeurls" /></a></li>
 						</ul></li>
 				<!-- END Relatórios -->
 			</ul>
@@ -55,7 +68,8 @@
 				<li><form name="barralistbox" class="navbar-form navbar-left">
 						<div class="form-group">
 							<select class="form-control">
-								<option value="sistema">Sistema</option>
+								<option value="sistema"><fmt:message key="br.cefetrj.psw.importaLog.sistema" /></option>
+								
 							</select>
 						</div>
 					</form></li>
@@ -63,8 +77,8 @@
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false"><fmt:message key="br.cefetrj.webdep.jsp.navbar.idioma" /> <span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="#"><fmt:message key="br.cefetrj.webdep.jsp.navbar.idioma.ingles" /></a></li>
-						<li><a href="#"><fmt:message key="br.cefetrj.webdep.jsp.navbar.idioma.portugues" /></a></li>
+						<li><a href="home.jsp?lang=en_US"><fmt:message key="br.cefetrj.webdep.jsp.navbar.idioma.ingles" /></a></li>
+						<li><a href="home.jsp?lang=pt_BR"><fmt:message key="br.cefetrj.webdep.jsp.navbar.idioma.portugues" /></a></li>
 
 					</ul></li>
 					
@@ -78,6 +92,7 @@
 	<!-- /.container-fluid -->
 </nav>
 
+<!-- Logout -->
   <div class="modal fade" id="logoutModal" role="dialog">
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
@@ -95,6 +110,27 @@
         </form>
         </div>
       </div>  
+    </div>
+  </div>
+  
+<!-- Session Timeout -->
+  <div class="modal fade" id="sessionTimeout" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"><fmt:message key="br.cefetrj.webdep.jsp.navbar.sessiontimeout.titulo" /></h4>
+        </div>
+        <div class="modal-body">
+          <p><fmt:message key="br.cefetrj.webdep.jsp.navbar.sessiontimeout.mensagem" /></p>
+        </div>
+        <div class="modal-footer">
+        <form method="post" action="FrontControllerServlet">
+          <button id="submit-padrao-url" name="action" value="deslogaUsuario" type="submit" class="btn btn-defailt"><fmt:message key="br.cefetrj.webdep.jsp.navbar.sessiontimeout.sair" /></button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal"><fmt:message key="br.cefetrj.webdep.jsp.navbar.sessiontimeout.permanecer" /></button>
+        </form>
+        </div>
+      </div>
     </div>
   </div>
   

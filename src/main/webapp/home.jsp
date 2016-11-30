@@ -1,3 +1,10 @@
+<%
+response.setHeader("Pragma","no-cache");
+response.setHeader("Cache-Control","no-store");
+response.setHeader("Expires","0");
+response.setDateHeader("Expires",-1);
+%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -17,13 +24,8 @@
 		<jsp:include page="head.jspf"/>
   	</head>
 	<body>
-		<!-- PARA TESTAR A PÁGINA SAIR NA FINALIZAÇÃO  -->
-		<c:set var="id" scope="session" value="1" />
-	
 	  <%@include file="navbar.jspf"%>
-		
-	 <c:if
-		test="${usuario.admGeral==true || usuario.perfil=='Administrador' }">
+
 		<h5>Vamos começar?</h5>
 		<ol>
 			<li>Inicie cadastrando um sistema a monitorar - <a
@@ -42,14 +44,6 @@
 			<li><a href="#">Selecione exclua dados históricos de logs</a></li>
 		</ul>
 
-	</c:if>
-		<h4>Bem vindo ${usuario.nome}</h4>
-		<!--
-		<h4>logado como ${usuario.nome} ${usuario.admGeral}
-		${usuario.perfil }</h4>
-		${lista}</br>
-		ID SISTEMA ${param.idsistema} ${sessionScope.idsistema}
-		-->
 	  <jsp:include page="scripts.jspf"/>
 	</body>
 </html>

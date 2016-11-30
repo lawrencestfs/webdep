@@ -17,6 +17,14 @@ public class AtualizaVersaoCommand implements Command {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		
+		/*
+		 *Validação dos campos e preenchimento dos campos com os dados atuais
+		 *da versão a ser alterada 
+		 *Inclusão da combo de sistemas feita pelo professor 
+		 * 
+		 */
+		
 		ArrayList <Versao> l = (ArrayList) request.getSession().getAttribute("list");
 		int index = Integer.parseInt(request.getParameter("index"));
 		
@@ -34,6 +42,8 @@ public class AtualizaVersaoCommand implements Command {
 		v.setTimestampLiberacao(ldt);
 		
 		VersaoServices.changeVersion(v);
+		
+		request.getRequestDispatcher("versionSearch.jsp").forward(request, response);
 		
 		
 	}

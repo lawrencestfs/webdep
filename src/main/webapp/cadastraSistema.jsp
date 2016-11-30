@@ -1,20 +1,15 @@
-<%--
-    Document   : cadastraSistema
-    Created on : Nov 5, 2016, 8:24:05 PM
-    Author     : Luan
---%>
- 
-
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="cmp" uri="WEB-INF/components.tld"%>
 
 <!-- Variável criada para auxiliar na identificação do locale -->
-<c:set var="lang" scope="session" value="${not empty param.lang ? param.lang : not empty lang ? lang : pageContext.request.locale}"/>
+<c:set var="lang" scope="session"
+	value="${not empty param.lang ? param.lang : not empty lang ? lang : pageContext.request.locale}" />
 
 <!-- Necessário para utilizar o i18N, informar o locale e o bundle -->
-<fmt:setLocale value="${ lang }"/>
+<fmt:setLocale value="${ lang }" />
 <fmt:setBundle basename="Messages" />
 <!DOCTYPE html>
 <html>
@@ -22,7 +17,7 @@
 <jsp:include page="head.jspf" />
 </head>
 <body>
-	<!-- include file="navbar.jspf"%>  -->
+	<%@include file="navbar.jspf"%>
 	<form id="sistema-form" class="form-horizontal container">
 		<div class="row">
 			<fieldset class="form-group">
@@ -63,7 +58,7 @@
 					<div id="div-prefixo-acesso" class="input-group">
 						<input type="text" id="pxLogs" name="pxLogs" class="form-control">
 						<span class="input-group-btn">
-							<button class="btn btn-info" type="button">
+							<button id="pxLogs-teste-btn" class="btn btn-info" type="button">
 								<fmt:message key="br.cefetrj.webdep.jsp.form.sistema.btnTeste" />
 							</button>
 						</span>
@@ -79,7 +74,7 @@
 					<div id="div-prefixo-erro" class="input-group">
 						<input type="text" class="form-control" id="pxLogs2"
 							name="pxLogs2"> <span class="input-group-btn">
-							<button class="btn btn-info" type="button">
+							<button id="pxLogs2-teste-btn" class="btn btn-info" type="button">
 								<fmt:message key="br.cefetrj.webdep.jsp.form.sistema.btnTeste" />
 							</button>
 						</span>
@@ -110,7 +105,7 @@
 					<br> <label class="text-right col-sm-6"><fmt:message
 							key="br.cefetrj.webdep.jsp.form.sistema.hora" /></label>
 					<div class="input-group date form_time col-sm-6" data-date=""
-						data-date-format="hh:mm:ss" data-link-field="dtp_input3"
+						data-date-format="hh:ii" data-link-field="dtp_input3"
 						data-link-format="hh:ii">
 						<div id="div-time" class="input-group">
 							<input class="form-control" type="text" id="time" name="time"
@@ -123,7 +118,7 @@
 					<br> <label class="text-right col-sm-6"><fmt:message
 							key="br.cefetrj.webdep.jsp.form.sistema.nova" /></label>
 					<div class="input-group date form_time col-sm-6" data-date=""
-						data-date-format="hh:mm:ss" data-link-field="dtp_input3"
+						data-date-format="hh:ii" data-link-field="dtp_input3"
 						data-link-format="hh:ii">
 						<div id="div-nova" class="input-group">
 							<input class="form-control" type="text" id="novaData"
