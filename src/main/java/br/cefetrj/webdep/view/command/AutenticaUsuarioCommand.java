@@ -60,21 +60,13 @@ public class AutenticaUsuarioCommand implements Command {
 			request.getSession().setAttribute("id", id);
 			login.setSenha(null);
 			request.getSession().setAttribute("usuario", login);
-			response.sendRedirect(request.getContextPath() + "/home.jsp"); 
+			response.sendRedirect(request.getContextPath() + "/home.jsp");
 			return;
 		} else {
-			if(login != null) {
-				request.setAttribute("msg", msg);
-				request.getSession().setAttribute("usuario", login.getLogin());
-				request.getRequestDispatcher("/index.jsp").forward(request, response);
-			} else {
-				if(currentLocale.getDisplayCountry().equals("Brazil")) {
-					msg = "Usuário não cadastrado!";
-				} else msg = "User doesn't exist!";
-				request.setAttribute("msg", msg);
-				request.getRequestDispatcher("/index.jsp").forward(request, response);
-			}
-		}	
+			request.getSession().setAttribute("msg", msg);
+			request.getSession().setAttribute("usuario", loginUsuario);
+			response.sendRedirect(request.getContextPath() + "/index.jsp");
+		}
 	}
 	
 	public static String sha512(String passwordToHash) {
