@@ -58,12 +58,13 @@ public class AutenticaUsuarioCommand implements Command {
 		
 		if(autenticado) {
 			request.getSession().setAttribute("id", id);
-			//login.setSenha(null);
-			//request.getSession().setAttribute("usuario", login);
-            response.sendRedirect(request.getContextPath() + "/home.jsp"); 
-            return;
+			login.setSenha(null);
+			request.getSession().setAttribute("usuario", login);
+			response.sendRedirect(request.getContextPath() + "/home.jsp"); 
+			return;
 		} else {
 			request.setAttribute("msg", msg);
+			request.getSession().setAttribute("usuario", login.getLogin());
 			request.getRequestDispatcher("/index.jsp").forward(request, response);
 		}	
 	}
