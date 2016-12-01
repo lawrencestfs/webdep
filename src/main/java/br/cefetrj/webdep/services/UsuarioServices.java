@@ -132,7 +132,7 @@ public class UsuarioServices {
 			pManager.rollbackTransaction();
 		}
 		
-		return 	usuario;
+		return usuario;
 	}
 	
 	public static Usuario validarEmail(String Email){

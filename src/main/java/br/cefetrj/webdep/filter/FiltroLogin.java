@@ -26,6 +26,7 @@ public class FiltroLogin implements Filter {
         
         String path = ((HttpServletRequest) request).getRequestURI();
         if (path.equals("/webdep/FrontControllerServlet")) {
+
             chain.doFilter(request, response);
         }
         
