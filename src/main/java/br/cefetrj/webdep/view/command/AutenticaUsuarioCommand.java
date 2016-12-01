@@ -63,9 +63,17 @@ public class AutenticaUsuarioCommand implements Command {
 			response.sendRedirect(request.getContextPath() + "/home.jsp"); 
 			return;
 		} else {
-			request.setAttribute("msg", msg);
-			request.getSession().setAttribute("usuario", login.getLogin());
-			request.getRequestDispatcher("/index.jsp").forward(request, response);
+			if(login != null) {
+				request.setAttribute("msg", msg);
+				request.getSession().setAttribute("usuario", login.getLogin());
+				request.getRequestDispatcher("/index.jsp").forward(request, response);
+			} else {
+				if(currentLocale.getDisplayCountry().equals("Brazil")) {
+					msg = "Usuário não cadastrado!";
+				} else msg = "User doesn't exist!";
+				request.setAttribute("msg", msg);
+				request.getRequestDispatcher("/index.jsp").forward(request, response);
+			}
 		}	
 	}
 	
