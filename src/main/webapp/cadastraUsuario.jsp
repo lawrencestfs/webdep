@@ -15,7 +15,7 @@
 </head>
 <body>
     <%@include file="navbar.jspf"%>
-	<div style="padding: 5%">
+	<div style="padding: 2%">
 		<form action="FrontControllerServlet" method="POST" id="jqCad">
 		<div class="panel panel-default">
 		  <div class="panel-heading"><fmt:message key="br.cefetrj.psw.user.panel" /></div>

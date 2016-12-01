@@ -44,7 +44,7 @@
 						<div class="form-group">
 			    		<label for="inputPanelBDUrl" class="col-sm-2 control-label"><fmt:message key="br.cefetrj.webdep.config.panelBD.form.URLTitle"/></label>
 		    			<div class="col-sm-10">
-		      				<input type="text" size="80" class="input-large" id="inpuPanelBDUrl" name="urlBanco" value="${param.urlBanco }"/>
+		      				<input type="text" size="50" class="input-large" id="inpuPanelBDUrl" name="urlBanco" value="${param.urlBanco }"/>
 		      				<c:if test="${not empty urlValida and not urlValida }">
 		      					<c:choose>
 		      						<c:when test="${not empty urlInvalida and urlInvalida}">

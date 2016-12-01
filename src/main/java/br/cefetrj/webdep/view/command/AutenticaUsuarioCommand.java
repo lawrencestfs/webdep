@@ -39,14 +39,15 @@ public class AutenticaUsuarioCommand implements Command {
 		Locale currentLocale = request.getLocale();
 		String msg = "";
 		if(currentLocale.getDisplayCountry().equals("Brazil")) {
-			msg += "Login ou senha incorretos!";
-		} else msg += "Incorrect username or password!";
+			msg = "Login ou senha incorretos!";
+		} else msg = "Incorrect username or password!";
 		
 		//Validando usuario
 		try {
 			login = UsuarioServices.validarLogin(loginUsuario);
 			senha = login != null? login.getSenha(): null;
 			id = login != null? login.getId(): null;
+			//System.out.println(login.getLogin() + senha + id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -58,13 +59,22 @@ public class AutenticaUsuarioCommand implements Command {
 		
 		if(autenticado) {
 			request.getSession().setAttribute("id", id);
-			//login.setSenha(null);
-			//request.getSession().setAttribute("usuario", login);
-            response.sendRedirect(request.getContextPath() + "/home.jsp"); 
-            return;
+			login.setSenha(null);
+			request.getSession().setAttribute("usuario", login);
+			response.sendRedirect(request.getContextPath() + "/home.jsp");
+			return;
 		} else {
-			request.setAttribute("msg", msg);
-			request.getRequestDispatcher("/index.jsp").forward(request, response);
+			if(login != null) {
+				request.setAttribute("msg", msg);
+				request.getSession().setAttribute("usuario", login.getLogin());
+				request.getRequestDispatcher("/index.jsp").forward(request, response);
+			} else {
+				if(currentLocale.getDisplayCountry().equals("Brazil")) {
+					msg = "Usuário não cadastrado!";
+				} else msg = "User doesn't exist!";
+				request.setAttribute("msg", msg);
+				request.getRequestDispatcher("/index.jsp").forward(request, response);
+			}
 		}	
 	}
 	

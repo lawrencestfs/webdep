@@ -34,7 +34,7 @@ public class FiltroLogin implements Filter {
             boolean loggedIn = session != null && session.getAttribute("id") != null;
             boolean loginRequest = request.getRequestURI().equals(loginURL);
              
-            if (loggedIn || loginRequest){
+            if (loggedIn || loginRequest) {
             	chain.doFilter(request, response);
             } else {
             	Locale currentLocale = request.getLocale();
