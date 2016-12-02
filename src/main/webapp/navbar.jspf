@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -10,9 +10,7 @@
 
 <!-- Jogando na sessao o id do sistema marcado combobox -->
 <c:if test="${!empty param.idsistema }">
-
 	<c:set var="idsistema" scope="session" value="${param.idsistema}" />
-
 </c:if>
 
 <!-- Alerta para expiração de sessão -->
@@ -58,9 +56,9 @@ links barra menu -->
 								key="br.cefetrj.webdep.jsp.navbar.sistemas" /><span
 							class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="cadastrodesistema.jsp"><fmt:message
+								<li><a href="cadastraSistema.jsp"><fmt:message
 											key="br.cefetrj.webdep.jsp.navbar.sistemas.cadastrarsistema" /></a></li>
-								<li><a href="gerenciadorsistema.jsp"><fmt:message
+								<li><a href="gerenciadorSistema.jsp"><fmt:message
 											key="br.cefetrj.webdep.jsp.navbar.sistemas.listaratualizarexcluir" /></a></li>
 								<li><a href="./versionRegistration.jsp"><fmt:message
 											key="br.cefetrj.webdep.jsp.navbar.sistemas.cadastrarnovaversao" /></a></li>
@@ -73,7 +71,8 @@ links barra menu -->
 				<c:if test="${sessionScope.usuario.admGeral==true || sessionScope.usuario.perfil=='Administrador'}">
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false" > Logs<span class="caret"></span></a>
+						aria-expanded="false" ><fmt:message
+										key="br.cefetrj.psw.importaLog.logs" /><span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="./importarLog.jsp"><fmt:message
 										key="br.cefetrj.webdep.jsp.navbar.logs.importarlogs" /></a></li>
@@ -89,13 +88,13 @@ links barra menu -->
 					test="${sessionScope.usuario.admGeral==true || sessionScope.usuario.perfil=='Administrador' || sessionScope.usuario.perfil=='Analista'}">
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false"> <fmt:message
+						aria-expanded="false"><fmt:message
 								key="br.cefetrj.webdep.jsp.navbar.relatorios" /><span
 							class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li><a href="./accessProfileReport.jsp"><fmt:message
 											key="br.cefetrj.webdep.jsp.navbar.relatorios.perfildeacesso" /></a></li>
-								<li><a href="./HTTPreport.jsp"><fmt:message
+								<li><a href="./httpReport.jsp"><fmt:message
 											key="br.cefetrj.webdep.jsp.navbar.relatorios.confiabilidadeurls" /></a></li>
 							</ul></li>
 				</c:if>

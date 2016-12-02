@@ -15,7 +15,7 @@
 </head>
 <body>
     <%@include file="navbar.jspf"%>
-	<div style="padding: 2%">
+	<div style="padding: 5%">
 		<form action="FrontControllerServlet" method="POST" id="jqCad">
 		<div class="panel panel-default">
 		  <div class="panel-heading"><fmt:message key="br.cefetrj.psw.user.panel" /></div>
@@ -75,8 +75,8 @@
 				<div class="form-group form-inline" >
 				<label for="sel1"><fmt:message key="br.cefetrj.psw.user.label.select"/></label>
 				  <select class="form-control" name="perfil">
-				    <option><fmt:message key="br.cefetrj.psw.user.label.optselect1"/></option>
-				    <option><fmt:message key="br.cefetrj.psw.user.label.optselect2"/></option>
+				    <option value="Analista"><fmt:message key="br.cefetrj.psw.user.label.optselect1"/></option>
+				    <option value="Administrador"><fmt:message key="br.cefetrj.psw.user.label.optselect2"/></option>
 				  </select>
 				</div>
 		  </div>

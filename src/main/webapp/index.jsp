@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+	
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!-- Taglib necessária para acessar as funções de formatação -->
@@ -9,14 +9,15 @@
 <c:set var="lang" scope="session" value="${not empty param.lang ? param.lang : not empty lang ? lang : pageContext.request.locale}"/>
 
 <!-- Necessário para utilizar o i18N, informar o locale e o bundle -->
-<fmt:setLocale value="${ lang }"/>
+<fmt:setLocale value="${lang}"/>
 <fmt:setBundle basename="Messages" />
 
 <!DOCTYPE html>
 <html>
 <head>
 <title>WebDep</title>
- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<!-- Evitando que browsers antigos alterem o encoding da página -->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <!-- Optional theme -->
@@ -28,7 +29,7 @@
     <div class="container-default">
         <div class="panel panel-default">
             <div class="panel-heading" align="left">
-                <h4><b><font color="black" style="font-family: Times;">WebDep</font> </b></h4>
+                <h4><b><font color="black" style="font-family: Times;">WebDep</font></b></h4>
             </div>
             <div class="panel-body"align="center">
                 <div class="container " style="margin-top: 10%; margin-bottom: 10%;">
