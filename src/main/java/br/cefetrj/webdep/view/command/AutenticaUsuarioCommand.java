@@ -39,8 +39,8 @@ public class AutenticaUsuarioCommand implements Command {
 		Locale currentLocale = request.getLocale();
 		String msg = "";
 		if(currentLocale.getDisplayCountry().equals("Brazil")) {
-			msg += "Login ou senha incorretos!";
-		} else msg += "Incorrect username or password!";
+			msg = "Login ou senha incorretos!";
+		} else msg = "Incorrect username or password!";
 		
 		//Validando usuario
 		try {
