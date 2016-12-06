@@ -33,7 +33,7 @@
             </div>
             <div class="panel-body"align="center">
                 <div class="container " style="margin-top: 10%; margin-bottom: 10%;">
-                	<div class="panel panel-default" style="max-width: 35%;" align="left">
+                	<div class="panel panel-default" style="max-width: 45%;" align="left">
                         <div class="panel-heading form-group">
                             <b><font color="black" style= "font-family: Times; font-size: 18px"><fmt:message key="br.cefetrj.webdep.jsp.index.nomeformulario" /></font></b>
                         </div>
@@ -44,11 +44,13 @@
     							<label class="control-label col-sm-2" for="login"><fmt:message key="br.cefetrj.webdep.jsp.index.login" /></label>
     							<div class="col-sm-10">
     							<c:choose>
-								    <c:when test="${!empty sessionScope.usuario}">
-								        <input type="text" class="form-control" name="login" id="login" required="required" value="<%=session.getAttribute("usuario")%>" >
+						 			<c:when test="${not empty loginUsuario}">
+								        <input type="text" class="form-control" name="login" id="login" value="${loginUsuario}" pattern=".{1,}" 
+								        required oninvalid="setCustomValidity('<fmt:message key="br.cefetrj.webdep.form.required"/>')" oninput="setCustomValidity('')" >
 								    </c:when>    
 								    <c:otherwise>
-								        <input type="text" class="form-control" name="login" id="login" required="required" >
+								        <input type="text" class="form-control" name="login" id="login" pattern=".{1,}" 
+								        required oninvalid="setCustomValidity('<fmt:message key="br.cefetrj.webdep.form.required"/>')" oninput="setCustomValidity('')" >
 								    </c:otherwise>
 								</c:choose>
     							</div>
@@ -56,7 +58,8 @@
   							<div class="form-group">
     							<label class="control-label col-sm-2" for="senha"><fmt:message key="br.cefetrj.webdep.jsp.index.senha" /></label>
     							<div class="col-sm-10"> 
-      								<input type="password" class="form-control" name="senha" id="senha" required="required">
+      								<input type="password" class="form-control" name="senha" id="senha" pattern=".{1,}" 
+								        required oninvalid="setCustomValidity('<fmt:message key="br.cefetrj.webdep.form.required"/>')" oninput="setCustomValidity('')" >
     							</div>
   							</div>
   							

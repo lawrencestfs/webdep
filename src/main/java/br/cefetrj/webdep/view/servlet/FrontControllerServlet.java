@@ -1,6 +1,7 @@
 package br.cefetrj.webdep.view.servlet;
 
 import java.io.IOException;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,13 +28,15 @@ import br.cefetrj.webdep.view.command.AtualizaSistemaCommand;
 import br.cefetrj.webdep.view.command.DeletaSistemaCommand;
 
 import br.cefetrj.webdep.view.command.InsereVersaoCommand;
-import br.cefetrj.webdep.view.command.ObterVersaoCommand;
+import br.cefetrj.webdep.view.command.BuscarVersaoCommand;
 import br.cefetrj.webdep.view.command.AtualizaVersaoCommand;
 import br.cefetrj.webdep.view.command.DeletaVersaoCommand;
 
 import br.cefetrj.webdep.view.command.InserePadraoURLCommand;
+import br.cefetrj.webdep.view.command.InsereSelectIdSistemaCommand;
 import br.cefetrj.webdep.view.command.ValidaHttpReportCommand;
-import br.cefetrj.webdep.view.command.GetHttpReportListsCommand;
+import br.cefetrj.webdep.view.command.ObterHttpReportListsCommand;
+import br.cefetrj.webdep.view.command.ObterVersaoCommand;
 import br.cefetrj.webdep.view.command.RegexPadraoURLCommand;
 
 import br.cefetrj.webdep.view.command.ValidaBanco;
@@ -68,6 +71,7 @@ public class FrontControllerServlet extends HttpServlet {
 		commands.put("listarPemissaoUsuario", new ListaPermissaoUsuarioCommand());
 		
 		commands.put("insertSistema", new InsereSistemaCommand());
+		commands.put("insertselectidsistema", new InsereSelectIdSistemaCommand());
 		commands.put("fillSistema", new FillSistemaCommand());
 		commands.put("updateSistema", new AtualizaSistemaCommand());
 		commands.put("listSistema", new ListaSistemaCommand());
@@ -75,12 +79,13 @@ public class FrontControllerServlet extends HttpServlet {
 		
 		commands.put("insertVersion", new InsereVersaoCommand());
 		commands.put("changeVersion", new AtualizaVersaoCommand());
-		commands.put("searchVersion", new ObterVersaoCommand());
+		commands.put("searchVersion", new BuscarVersaoCommand());
+		commands.put("getVersion", new ObterVersaoCommand());
 		commands.put("deleteVersion", new DeletaVersaoCommand());
 		
 		commands.put("insertPadraoURL", new InserePadraoURLCommand());
 		commands.put("errorParameter", new ValidaHttpReportCommand());
-		commands.put("getListsParameter", new GetHttpReportListsCommand());
+		commands.put("getListsParameter", new ObterHttpReportListsCommand());
 		commands.put("regexPadraoURL", new RegexPadraoURLCommand());
 		
 		commands.put("ValidaBanco", new ValidaBanco());
@@ -97,17 +102,25 @@ public class FrontControllerServlet extends HttpServlet {
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		try{
+		try {
 			String action = request.getParameter("action");
+			/*
+			Enumeration<String> params = request.getParameterNames();
+			System.out.println();
+			while(params.hasMoreElements()){
+			 String paramName = (String)params.nextElement();
+			 System.out.println("Parameter Name - "+paramName+", Value - "+request.getParameter(paramName));
+			}
+			*/
 			commands.get(action).execute(request, response);
-		}catch(Exception e){
+			
+		} catch(Exception e) {
 			request.getRequestDispatcher("error.jsp").forward(request, response);
+			//e.printStackTrace();
 		}
-		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		doGet(request, response);
 	}
 

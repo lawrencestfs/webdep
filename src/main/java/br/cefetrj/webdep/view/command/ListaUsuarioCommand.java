@@ -26,7 +26,7 @@ public class ListaUsuarioCommand implements Command {
 			List<Usuario> usu = null;	
 			usu = UsuarioServices.listarTodos();
 		
-			request.setAttribute("usuario", usu);				
+			request.setAttribute("usuarios", usu);				
 			request.getRequestDispatcher("listaUsuario.jsp").forward(request, response);	
 	}
 	
@@ -41,7 +41,7 @@ public class ListaUsuarioCommand implements Command {
 		
 			try {
 				usu = UsuarioServices.buscaTodos(search.trim());
-				request.setAttribute("usuario", usu);				
+				request.setAttribute("usuarios", usu);				
 				request.getRequestDispatcher("listaUsuario.jsp").forward(request, response);	
 			} catch (Exception e) {
 				doGet(request, response);

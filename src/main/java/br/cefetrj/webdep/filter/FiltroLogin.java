@@ -25,19 +25,23 @@ public class FiltroLogin implements Filter {
         HttpSession session = request.getSession();
         
         String path = ((HttpServletRequest) request).getRequestURI();
-        if (path.equals("/webdep/FrontControllerServlet")) {
-
+        String loginURL = request.getContextPath() + "/index.jsp";
+        
+        System.out.println(path);
+        
+        if (path.equals("/webdep/FrontControllerServlet") || path.equals(loginURL)) {
             chain.doFilter(request, response);
         }
         
         else {
-        	String loginURL = request.getContextPath() + "/index.jsp";
+        	//String loginURL = request.getContextPath() + "/index.jsp";
             boolean loggedIn = session != null && session.getAttribute("id") != null;
-            boolean loginRequest = request.getRequestURI().equals(loginURL);
+            //boolean loginRequest = request.getRequestURI().equals(loginURL);
              
-            if (loggedIn || loginRequest) {
+            if (loggedIn) {// || loginRequest) {
             	chain.doFilter(request, response);
-            } else {
+            } 
+            else {
             	Locale currentLocale = request.getLocale();
             	@SuppressWarnings("unused")
 				String msg = "";

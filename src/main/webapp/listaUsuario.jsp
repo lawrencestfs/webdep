@@ -1,3 +1,10 @@
+<%
+response.setHeader("Pragma","no-cache");
+response.setHeader("Cache-Control","no-store");
+response.setHeader("Expires","0");
+response.setDateHeader("Expires",-1);
+%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -20,7 +27,8 @@
 			<div class="form-group form-inline" >
 			
             	<input id="action" name="action" type="hidden" value="listaUsuario"/>
-      			<input type="text" class="form-control" name="search" id="search" required="required">
+      			<input type="text" class="form-control" name="search" id="search" pattern=".{1,}" 
+				required oninvalid="setCustomValidity('<fmt:message key="br.cefetrj.webdep.form.required"/>')" oninput="setCustomValidity('')" >
     			<button type="submit" class="btn btn-primary" ><b><fmt:message key="br.cefetrj.psw.user.bt_buscar"/></b></button>
     		</div>
 		</form>
@@ -37,7 +45,7 @@
 		      </tr>
 		  </thead>
 		  <tbody>
-		      <c:forEach items="${ usuario }" var="usu">					
+		      <c:forEach items="${ usuarios }" var="usu">					
 			      <tr>
 			        <td>${ usu.nome }</td>
 			        <td>${ usu.login }</td>

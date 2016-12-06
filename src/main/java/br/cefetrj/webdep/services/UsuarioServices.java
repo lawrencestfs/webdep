@@ -78,6 +78,7 @@ public class UsuarioServices {
 		try {
 			pManager.beginTransaction();
 			
+			@SuppressWarnings("unchecked")
 			TypedQuery	<Permissao> query = (TypedQuery<Permissao>) pManager.createQuery("SELECT p FROM Permissao p where p.usuario = :usu");
 			list = query.setParameter("usu", usu).getResultList();
 			
@@ -153,6 +154,7 @@ public class UsuarioServices {
 		try {
 			pManager.beginTransaction();
 
+			@SuppressWarnings("unchecked")
 			TypedQuery	<Usuario> query = (TypedQuery<Usuario>) pManager.createQuery("select u from Usuario u WHERE u.nome LIKE :busca OR u.login LIKE :busca OR u.email LIKE :busca");
 			usuarios = query.setParameter("busca", "%"+busca+"%").getResultList();
 			
@@ -168,6 +170,7 @@ public class UsuarioServices {
 		PersistenceManager pManager = PersistenceManager.getInstance();
 		try {
 			pManager.beginTransaction();
+			@SuppressWarnings("unchecked")
 			TypedQuery	<Usuario> query = (TypedQuery<Usuario>) pManager.createQuery("select u from Usuario u WHERE u.login = :login");
 			usuario = query.setParameter("login", Login).getSingleResult();
 			
@@ -183,6 +186,7 @@ public class UsuarioServices {
 		PersistenceManager pManager = PersistenceManager.getInstance();
 		try {
 			pManager.beginTransaction();
+			@SuppressWarnings("unchecked")
 			TypedQuery	<Usuario> query = (TypedQuery<Usuario>) pManager.createQuery("select u from Usuario u WHERE u.email = :email");
 			usuario = query.setParameter("email", Email).getSingleResult();	
 			

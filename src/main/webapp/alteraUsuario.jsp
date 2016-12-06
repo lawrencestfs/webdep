@@ -1,3 +1,10 @@
+<%
+response.setHeader("Pragma","no-cache");
+response.setHeader("Cache-Control","no-store");
+response.setHeader("Expires","0");
+response.setDateHeader("Expires",-1);
+%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -58,7 +65,8 @@
 				</div>
 				<div class="form-group form-inline ${ not empty senhaValido1 and not senhaValido1 ? "has-error" : "" }" >
 					<label for="inputSenha1"><fmt:message key="br.cefetrj.psw.user.label.senha1"/></label> 
-					<input type="password" class="form-control" id="inputSenha1" name="senha"/>
+					<input type="password" class="form-control" id="inputSenha1" name="senha" pattern=".{1,}" 
+					required oninvalid="setCustomValidity('<fmt:message key="br.cefetrj.webdep.form.required"/>')" oninput="setCustomValidity('')" >
 					
 					<c:if test="${not empty senhaValido1 and not senhaValido1 }">
 						<span class="help-block">
@@ -68,7 +76,8 @@
 				</div>
 				<div class="form-group form-inline ${ not empty senhaValido2 and not senhaValido2 ? "has-error" : "" }" >
 					<label for="inputSenha2"><fmt:message key="br.cefetrj.psw.user.label.senha2"/></label> 
-					<input type="password" class="form-control" id="inputSenha2" name="senha2"/>
+					<input type="password" class="form-control" id="inputSenha2" name="senha2"  pattern=".{1,}" 
+					required oninvalid="setCustomValidity('<fmt:message key="br.cefetrj.webdep.form.required"/>')" oninput="setCustomValidity('')" >
 					
 					<c:if test="${not empty senhaValido2 and not senhaValido2 }">
 						<span class="help-block">

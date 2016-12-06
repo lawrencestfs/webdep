@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 /**
@@ -31,6 +32,7 @@ public class Versao  implements Serializable {
 	private LocalDateTime timestampLiberacao;
 
 	@ManyToOne
+	@JoinColumn(name="versoes")
 	private Sistema sistema;
 	
 	public Long getId() {
